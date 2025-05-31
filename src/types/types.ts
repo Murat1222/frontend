@@ -1,5 +1,5 @@
 export interface ILabel {
-  id: string;
+  id: number;
   caption: string;
   color: string;
 }
@@ -11,3 +11,15 @@ export interface IUser {
   bio?: string;
 }
 
+export interface ITask {
+  id: number;
+  title: string;
+  description: string;
+  assignee_id: number;
+  created_at: Date;
+}
+
+export interface ITaskLabel {
+  task_id: number;
+  label_id: number
+}

@@ -12,9 +12,5 @@ export const fetchLabels = async () => {
       }
     `
   })
-  console.log(response);
-  console.log(response.data);
-  console.log(response.data.data);
-  console.log(response.data.data.labels);
   return response.data.data.labels
 }
