@@ -1,0 +1,152 @@
+.title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 24px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 10px;
+}
+
+.task {
+  position: relative;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 10px 15px;
+  background-color: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  &__description {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 10px;
+  }
+
+  &__created {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 16px;
+  }
+
+  &__delete {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background: transparent;
+    border: none;
+    color: #888;
+    font-size: 32px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: red;
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px auto;
+  padding: 20px;
+  width: 320px;
+  background-color: #f3f3f3;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  &__select {
+    padding: 10px 14px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #999;
+      background-color: #f0f0f0;
+    }
+  }
+
+  &__option {
+    color: #333;
+    background-color: #fff;
+  }
+
+  &__input {
+    padding: 10px 14px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+
+    &::placeholder {
+      color: #999;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #999;
+      background-color: #f0f0f0;
+    }
+  }
+
+  &__button {
+    padding: 12px 0;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #999;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #7a7a7a;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+.sort {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+
+  label {
+    margin-right: 8px;
+    font-weight: bold;
+  }
+
+  select {
+    padding: 6px 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+}

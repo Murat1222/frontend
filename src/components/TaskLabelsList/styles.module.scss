@@ -1,0 +1,89 @@
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 0 15px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px auto;
+  padding: 20px;
+  width: 320px;
+  background-color: #f3f3f3;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  &__select {
+    padding: 10px 14px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #999;
+      background-color: #f0f0f0;
+    }
+  }
+
+  &__option {
+    color: #333;
+    background-color: #fff;
+  }
+
+  &__button {
+    padding: 12px 0;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #999;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #7a7a7a;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+.tasklabel {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px 16px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  cursor: default;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  &__caption {
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
