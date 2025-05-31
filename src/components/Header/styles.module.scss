@@ -1,0 +1,17 @@
+.menu {
+  background-color: #fff;
+  padding: 20px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px auto;
+  border-radius: 16px;
+  box-shadow: 0 0 13px #00000026;
+
+  &__link {
+    text-decoration: none;
+    color: #000000;
+    font-size: 20px;
+    font-weight: 200;
+  }
+}
