@@ -16,7 +16,7 @@ export interface ITask {
   title: string;
   description: string;
   assignee_id: number;
-  created_at: Date;
+  created_at?: string;
 }
 
 export interface ITaskLabel {

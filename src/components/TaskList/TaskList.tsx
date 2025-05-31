@@ -1,26 +1,41 @@
-import { useTasks } from "../../hooks/useTasks"
+import { useDeleteTask, useTasks } from "../../hooks/useTasks"
 import type { ITask } from "../../types/types";
 import styles from './styles.module.scss'
+import TaskForm from "./TaskForm";
 
 function TaskList() {
   const {data: tasks, isLoading, error} = useTasks();
+  const deleteTask = useDeleteTask();
   
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
+
+  const handleDelete = (id: number) => {
+    deleteTask.mutate(id);
+  };
   
   return (
-    <div className={styles.grid}>
-      {tasks?.map((task : ITask) => (
-        <div key={task.id} className={styles.task}>
-          <h3 className={styles.task__title}>{task.title}</h3>
-          <p className={styles.task__description}>{task.description}</p>
-          <span className={styles.task__created}>{new Date(task.created_at).toLocaleDateString()}</span>
-          <button className={styles.task__delete}>
-              &times;
+    <>
+      <TaskForm />
+      <div className={styles.grid}>
+        {tasks?.map((task : ITask) => (
+          <div key={task.id} className={styles.task}>
+            <h3 className={styles.task__title}>{task.title}</h3>
+            <p className={styles.task__description}>{task.description}</p>
+            {task.created_at && <span className={styles.task__created}>{new Date(task.created_at).toLocaleDateString()}</span>}
+            <button 
+                onClick={() => handleDelete(task.id)}
+                className={styles.task__delete}
+              >
+                &times;
             </button>
-        </div>
-      ))}
-    </div>
+            <TaskForm 
+              task={task} 
+            />
+          </div>
+        ))}
+      </div>
+    </>
   )
 }
 
