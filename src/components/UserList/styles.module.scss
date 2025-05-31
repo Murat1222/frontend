@@ -75,6 +75,7 @@
     background-color: #ffffff;
     border: 1px solid #cccccc;
     border-radius: 8px;
+    resize: none;
     transition: border-color 0.3s ease, background-color 0.3s ease;
     &::placeholder {
       color: #999999;
