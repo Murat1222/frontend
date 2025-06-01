@@ -12,7 +12,7 @@ function TaskLabelList() {
   const { data: labels } = useLabels();
 
   if (isLoading) return <Loader />;
-  if (error) return <div>Error: {error.message}</div>;
+  if (error) return <div className={styles.error}>Error: {error.message}</div>;
 
   const getTaskTitle = (taskId: number) => {
     return tasks?.find((task : ITask) => task.id === taskId)?.title || `Task ${taskId}`;
@@ -24,6 +24,7 @@ function TaskLabelList() {
 
   return (
     <>
+      <h1 className={styles.title}>Task Labels</h1>
       <TaskLabelForm />
       <div className={styles.grid}>
         {taskLabels?.map((tasklb: ITaskLabel, i: number) => (

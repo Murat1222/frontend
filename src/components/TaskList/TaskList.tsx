@@ -9,7 +9,7 @@ function TaskList() {
   const deleteTask = useDeleteTask();
   
   if (isLoading) return <Loader />;
-  if (error) return <div>Error: {error.message}</div>;
+  if (error) return <div className={styles.error}>Error: {error.message}</div>;
 
   const handleDelete = (id: number) => {
     deleteTask.mutate(id);
@@ -17,6 +17,7 @@ function TaskList() {
   
   return (
     <>
+      <h1 className={styles.title}>Tasks</h1>
       <TaskForm />
       <div className={styles.grid}>
         {tasks?.map((task : ITask) => (

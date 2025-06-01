@@ -5,15 +5,22 @@ import type { ITaskLabel } from "../types/types";
 export const useTaskLabels = () => {
   return useQuery<ITaskLabel[]>({
     queryKey: ['task_labels'],
-    queryFn: () => 
-      apiClient.post('', {
+    queryFn: async () => {
+      const response = await apiClient.post('', {
         query: `{
           task_labels {
             task_id
             label_id
           }
         }`
-      }).then(res => res.data.data.task_labels)
+      })
+
+      if (response.data.errors) {
+        throw { message: response.data.errors[0]?.message || 'Unknown error' };
+      }
+
+      return response.data.data.task_labels
+    }
   });
 };
 

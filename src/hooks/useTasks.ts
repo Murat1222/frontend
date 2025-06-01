@@ -5,10 +5,17 @@
   export const useTasks = () => {
     return useQuery<ITask[]>({
       queryKey: ['tasks'],
-      queryFn: () => 
-        apiClient.post('', {
+      queryFn: async () => {
+        const response = await apiClient.post('', {
           query: `{ tasks { id title description assignee_id created_at } }`
-        }).then(res => res.data.data.tasks)
+        })
+
+        if (response.data.errors) {
+        throw { message: response.data.errors[0]?.message || 'Unknown error' };
+        }
+
+        return response.data.data.tasks
+      }
     });
   };
 

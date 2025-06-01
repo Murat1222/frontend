@@ -8,10 +8,11 @@ function UserList() {
   const { data: users, isLoading, error } = useUsers();
   
   if (isLoading) return <Loader />;
-  if (error) return <div>Error: {error.message}</div>;
+  if (error) return <div className={styles.error}>Error: {error.message}</div>;
 
   return (
     <>
+      <h1 className={styles.title}>Users</h1>
       <UserForm />
       <div className={styles.grid}>
         {users?.map((user: IUser) => (

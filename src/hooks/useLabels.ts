@@ -5,8 +5,8 @@ import type { ILabel } from "../types/types";
 export const useLabels = () => {
   return useQuery<ILabel[]>({
     queryKey: ['labels'],
-    queryFn: () => 
-      apiClient.post('', {
+    queryFn: async () => {
+      const response = await apiClient.post('', {
         query: `{
           labels(order_by: {id: asc}) {
             id
@@ -14,7 +14,14 @@ export const useLabels = () => {
             color
           }
         }`
-      }).then(res => res.data.data.labels)
+      })
+
+      if (response.data.errors) {
+        throw { message: response.data.errors[0]?.message || 'Unknown error' };
+      }
+
+      return response.data.data.labels
+    } 
   });
 };
 

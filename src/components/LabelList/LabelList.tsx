@@ -9,7 +9,7 @@ function LabelList() {
   const deleteLabel = useDeleteLabel();
 
   if (isLoading) return <Loader />;
-  if (error) return <div>Error: {error.message}</div>;
+  if (error) return <div className={styles.error}>Error: {error.message}</div>;
 
   const handleDelete = (id: number) => {
     deleteLabel.mutate(id);
@@ -17,7 +17,8 @@ function LabelList() {
 
   return (
     <>
-    <LabelForm />
+      <h1 className={styles.title}>Labels</h1>
+      <LabelForm />
       <div className={styles.grid}>
         {labels?.map((label : ILabel) => (
           <div key={label.id} className={styles.label}>
