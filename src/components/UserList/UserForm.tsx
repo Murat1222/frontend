@@ -60,6 +60,7 @@ export function UserForm({ user = null }: UserFormProps) {
         onChange={(e) => setBio(e.target.value)}
         placeholder="Bio"
         className={styles.form__input}
+        required
       />
 
       <button 

@@ -5,6 +5,7 @@ import type { ILabel, ITask, ITaskLabel } from "../../types/types";
 import styles from './styles.module.scss';
 import TaskLabelForm from "./TaskLabelForm";
 import Loader from "../../shared/Loader/Loader";
+import { truncateText } from "../../shared/TruncateText/TruncateText";
 
 function TaskLabelList() {
   const { data: taskLabels, isLoading, error } = useTaskLabels();
@@ -30,10 +31,10 @@ function TaskLabelList() {
         {taskLabels?.map((tasklb: ITaskLabel, i: number) => (
           <div key={i} className={styles.tasklabel}>
             <h3 className={styles.tasklabel__title}>
-              {getTaskTitle(tasklb.task_id)}
+              {truncateText(getTaskTitle(tasklb.task_id), 45)}
             </h3>
             <p className={styles.tasklabel__caption}>
-              {getLabelCaption(tasklb.label_id)}
+              {truncateText(getLabelCaption(tasklb.label_id), 45)}
             </p>
           </div>
         ))}
