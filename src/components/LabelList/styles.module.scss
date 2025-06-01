@@ -114,3 +114,19 @@
   border-radius: 4px;
   margin: 20px;
 }
+
+.sortbtn {
+  margin-left: 30px;
+  margin-bottom: 25px;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+
+  &:hover {
+    background: #e0e0e0;
+  }
+}
