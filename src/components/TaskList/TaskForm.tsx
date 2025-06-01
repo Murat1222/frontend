@@ -33,6 +33,9 @@ function TaskForm({ task = null }: TaskFormProps) {
         description,
         assignee_id: assigneeId
       });
+      setTitle('')
+      setDescription('')
+      setAssigneeId(0)
     }
   };
 

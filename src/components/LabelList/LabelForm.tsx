@@ -27,6 +27,8 @@ function LabelForm({label = null} : LabelFormProps) {
         caption,
         color
       })
+      setCaption('')
+      setColor('')
     }
   }
 

@@ -29,6 +29,9 @@ export function UserForm({ user = null }: UserFormProps) {
       updateUser.mutate({ ...userData, id: user.id });
     } else {
       createUser.mutate(userData);
+      setFirstName('')
+      setLastName('')
+      setBio('')
     }
   };
 
