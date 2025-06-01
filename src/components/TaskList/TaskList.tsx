@@ -1,4 +1,5 @@
 import { useDeleteTask, useTasks } from "../../hooks/useTasks"
+import Loader from "../../shared/Loader/Loader";
 import type { ITask } from "../../types/types";
 import styles from './styles.module.scss'
 import TaskForm from "./TaskForm";
@@ -7,7 +8,7 @@ function TaskList() {
   const {data: tasks, isLoading, error} = useTasks();
   const deleteTask = useDeleteTask();
   
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loader />;
   if (error) return <div>Error: {error.message}</div>;
 
   const handleDelete = (id: number) => {

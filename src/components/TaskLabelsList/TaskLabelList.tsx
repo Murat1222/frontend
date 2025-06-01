@@ -3,13 +3,15 @@ import { useTasks } from "../../hooks/useTasks";
 import { useLabels } from "../../hooks/useLabels";
 import type { ILabel, ITask, ITaskLabel } from "../../types/types";
 import styles from './styles.module.scss';
+import TaskLabelForm from "./TaskLabelForm";
+import Loader from "../../shared/Loader/Loader";
 
 function TaskLabelList() {
   const { data: taskLabels, isLoading, error } = useTaskLabels();
   const { data: tasks } = useTasks();
   const { data: labels } = useLabels();
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loader />;
   if (error) return <div>Error: {error.message}</div>;
 
   const getTaskTitle = (taskId: number) => {
@@ -21,18 +23,21 @@ function TaskLabelList() {
   };
 
   return (
-    <div className={styles.grid}>
-      {taskLabels?.map((tasklb: ITaskLabel, i: number) => (
-        <div key={i} className={styles.tasklabel}>
-          <h3 className={styles.tasklabel__title}>
-            {getTaskTitle(tasklb.task_id)}
-          </h3>
-          <p className={styles.tasklabel__caption}>
-            {getLabelCaption(tasklb.label_id)}
-          </p>
-        </div>
-      ))}
-    </div>
+    <>
+      <TaskLabelForm />
+      <div className={styles.grid}>
+        {taskLabels?.map((tasklb: ITaskLabel, i: number) => (
+          <div key={i} className={styles.tasklabel}>
+            <h3 className={styles.tasklabel__title}>
+              {getTaskTitle(tasklb.task_id)}
+            </h3>
+            <p className={styles.tasklabel__caption}>
+              {getLabelCaption(tasklb.label_id)}
+            </p>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
 

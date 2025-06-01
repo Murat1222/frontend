@@ -1,4 +1,5 @@
 import { useDeleteLabel, useLabels } from "../../hooks/useLabels"
+import Loader from "../../shared/Loader/Loader";
 import type { ILabel } from "../../types/types";
 import LabelForm from "./LabelForm";
 import styles from './styles.module.scss'
@@ -7,7 +8,7 @@ function LabelList() {
   const {data: labels, isLoading, error} = useLabels();
   const deleteLabel = useDeleteLabel();
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loader />;
   if (error) return <div>Error: {error.message}</div>;
 
   const handleDelete = (id: number) => {

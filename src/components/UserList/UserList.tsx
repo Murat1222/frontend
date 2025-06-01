@@ -1,4 +1,5 @@
 import { useUsers } from "../../hooks/useUsers";
+import Loader from "../../shared/Loader/Loader";
 import type { IUser } from "../../types/types";
 import styles from './styles.module.scss';
 import { UserForm } from "./UserForm";
@@ -6,7 +7,7 @@ import { UserForm } from "./UserForm";
 function UserList() {
   const { data: users, isLoading, error } = useUsers();
   
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loader />;
   if (error) return <div>Error: {error.message}</div>;
 
   return (
