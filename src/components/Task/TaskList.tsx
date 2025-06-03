@@ -8,6 +8,7 @@ import type { ILabel, ITask } from "../../types/types";
 import styles from './styles.module.scss';
 import TaskForm from "./TaskForm";
 import LabelCard from "../Label/LabelCard";
+import AddLabelModal from "./ui/AddLabelModal";
 
 function TaskList() {
   const { data: tasks, isLoading, error } = useTasks();
@@ -15,6 +16,7 @@ function TaskList() {
   const { data: labels } = useLabels();
   const deleteTask = useDeleteTask();
   const [selectedTask, setSelectedTask] = useState<ITask | null>(null);
+  const [addLabelsTask, setAddLabelsTask] = useState<ITask | null>(null);
   
   if (isLoading) return <Loader />;
   if (error) return <div className={styles.error}>Error: {error.message}</div>;
@@ -46,9 +48,15 @@ function TaskList() {
           <div key={task.id} className={styles.task}>
             <button 
               onClick={() => openLabelsModal(task)}
-              className={styles.task__showLabels}
+              className={styles.task__showbtn}
             >
               Show Labels
+            </button>
+            <button
+              onClick={() => setAddLabelsTask(task)}
+              className={styles.task__showbtn}
+            >
+              Add label
             </button>
             <h3 className={styles.task__title}>{truncateText(task.title, 45)}</h3>
             <p className={styles.task__description}>{truncateText(task.description, 60)}</p>
@@ -110,6 +118,12 @@ function TaskList() {
             </div>
           </div>
         </div>
+      )}
+      {addLabelsTask && (
+        <AddLabelModal
+          task={addLabelsTask} 
+          onClose={() => setAddLabelsTask(null)} 
+        />
       )}
     </>
   );
