@@ -1,4 +1,4 @@
-import LabelList from "../../components/LabelList/LabelList"
+import LabelList from "../../components/Label/LabelList"
 
 function LabelsPage() {
   return (

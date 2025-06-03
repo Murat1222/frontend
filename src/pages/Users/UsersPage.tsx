@@ -1,4 +1,4 @@
-import UserList from "../../components/UserList/UserList"
+import UserList from "../../components/User/UserList"
 
 function UsersPage() {
   return (

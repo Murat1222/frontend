@@ -7,7 +7,7 @@
       queryKey: ['tasks'],
       queryFn: async () => {
         const response = await apiClient.post('', {
-          query: `{ tasks { id title description assignee_id created_at } }`
+          query: `{ tasks(order_by: {id: asc}) { id title description assignee_id created_at } }`
         })
 
         if (response.data.errors) {

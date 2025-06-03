@@ -14,14 +14,9 @@
   position: relative;
   border-radius: 10px;
   padding: 20px 20px 30px 20px;
-  margin: 0;
+  margin: 10px 0;
   background-color: #fafafa;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-  }
 
   &__delete {
     position: absolute;
