@@ -94,30 +94,7 @@ function TaskList() {
               )}
             </div>
           </div>
-        </div>
-      )}{selectedTask && (
-        <div className={styles.modal}>
-          <div className={styles.modal__content}>
-            <button 
-              onClick={closeLabelsModal}
-              className={styles.modal__close}
-            >
-              &times;
-            </button>
-            <h3 className={styles.modal__title}>
-              Labels for: {selectedTask.title}
-            </h3>
-            <div className={styles.modal__labels}>
-              {getTaskLabels(selectedTask.id).length > 0 ? (
-                getTaskLabels(selectedTask.id).map((label: ILabel) => (
-                  <LabelCard key={label.id} label={label} />
-                ))
-              ) : (
-                <p className={styles.noLabels}>No labels assigned to this task</p>
-              )}
-            </div>
-          </div>
-        </div>
+        </div>         
       )}
       {addLabelsTask && (
         <AddLabelModal
